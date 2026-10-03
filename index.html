@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="google" content="notranslate">
+<title>WE'RE ALL DIFFERENT — By Teacher Lizbeth Garay</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Nunito:wght@600;800;900&display=swap" rel="stylesheet">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+  body{
+    font-family:'Nunito',sans-serif;min-height:100vh;color:#edf3ff;overflow-x:hidden;
+    background:linear-gradient(165deg,#08042a 0%,#160a3d 40%,#2b0a55 68%,#0a1b4d 100%);
+    background-attachment:fixed;
+  }
+  #sky{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden;}
+  .wr{position:relative;z-index:2;max-width:960px;margin:0 auto;padding:calc(14px + .6vh) 12px 46px;}
+
+  /* ---------- mystical sky ---------- */
+  .moon{position:absolute;right:6%;top:7%;width:clamp(70px,14vw,110px);height:clamp(70px,14vw,110px);border-radius:50%;
+    background:radial-gradient(circle at 35% 30%,#ffffff,#d9e6ff 55%,#8fa8ff);box-shadow:0 0 60px rgba(170,195,255,.95),0 0 140px rgba(120,150,255,.55);}
+  .star{position:absolute;border-radius:50%;background:#fff;animation:twk ease-in-out infinite;}
+  @keyframes twk{0%,100%{opacity:.12}50%{opacity:1;box-shadow:0 0 8px rgba(255,255,255,.9)}}
+  .shoot{position:absolute;width:2px;height:2px;background:#fff;border-radius:50%;box-shadow:0 0 10px #fff;left:64%;top:16%;
+    animation:sh 7s linear infinite;}
+  @keyframes sh{0%{transform:translate(0,0);opacity:0}5%{opacity:1}18%{transform:translate(-300px,190px);opacity:0}100%{opacity:0}}
+  @media(prefers-reduced-motion:reduce){.moon,.star,.shoot{animation:none!important}}
+
+  /* ---------- titles ---------- */
+  .titles{text-align:center;margin:8px 0 4px;}
+  .h-title{font-family:'Cinzel',serif;font-weight:900;letter-spacing:2px;line-height:1.1;font-size:clamp(1.5rem,7.5vw,3rem);margin:0;text-shadow:0 0 30px rgba(150,70,255,.7);}
+  .h-title .ltr{display:inline-block;animation:ltrPop .5s both;}
+  @keyframes ltrPop{from{transform:translateY(14px);opacity:0}to{transform:none;opacity:1}}
+  .subtitle{font-family:'Cinzel',serif;font-weight:700;letter-spacing:4px;margin:8px 0 0;font-size:clamp(.68rem,3vw,.95rem);color:#ffe9a8;text-shadow:0 0 12px rgba(255,210,74,.8),0 2px 6px rgba(0,0,0,.6);}
+  .designed{display:inline-block;margin-top:10px;font-weight:900;font-size:clamp(.7rem,3vw,.9rem);letter-spacing:2px;color:#d2ffef;
+    background:rgba(20,6,58,.65);border:1px solid rgba(0,247,255,.5);border-radius:999px;padding:6px 16px;box-shadow:0 0 16px rgba(0,247,255,.25);}
+
+  .screen{display:none;}
+  .screen.on{display:block;animation:fadeIn .45s;}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+  .center{text-align:center;}
+  .bigger{font-size:clamp(2.6rem,10vw,4.6rem);margin:4px 0;line-height:1;filter:drop-shadow(0 0 14px rgba(255,138,40,.6));}
+
+  .card{background:rgba(12,4,44,.55);border:1px solid rgba(0,247,255,.35);border-radius:22px;padding:18px;backdrop-filter:blur(6px);
+    box-shadow:0 0 26px rgba(255,138,40,.22),0 14px 34px rgba(0,0,0,.45),inset 0 0 22px rgba(0,247,255,.05);}
+  .fld label{display:block;font-weight:900;font-size:.8rem;letter-spacing:1.5px;color:#ffe9a8;margin-bottom:6px;text-shadow:0 0 10px rgba(255,210,74,.6);}
+  .fld input{width:100%;padding:13px 16px;border-radius:14px;border:2px solid rgba(0,247,255,.55);background:rgba(6,2,28,.8);
+    color:#eaf6ff;font-size:1rem;font-weight:800;outline:none;font-family:'Nunito',sans-serif;box-shadow:0 0 12px rgba(0,247,255,.15);}
+  .fld input:focus{border-color:#b026ff;box-shadow:0 0 0 3px rgba(176,38,255,.45),0 0 22px rgba(176,38,255,.4);}
+
+  .btn{display:inline-block;cursor:pointer;border:none;background:linear-gradient(180deg,#7a2ff0,#b026ff);
+    color:#fff;font-weight:900;font-size:1rem;padding:13px 24px;border-radius:999px;letter-spacing:1px;
+    box-shadow:0 0 20px rgba(176,38,255,.55),0 6px 0 #5d0fa8,0 10px 22px rgba(0,0,0,.4);transition:transform .12s,box-shadow .12s;}
+  .btn:hover{transform:translateY(-2px);box-shadow:0 0 30px rgba(176,38,255,.8),0 6px 0 #5d0fa8;}
+  .btn:active{transform:translateY(3px);box-shadow:0 3px 0 #5d0fa8;}
+  .btn.green{background:linear-gradient(180deg,#00c996,#00e676);color:#03281a;box-shadow:0 0 20px rgba(0,230,118,.55),0 6px 0 #008a46;}
+  .btn.blue{background:linear-gradient(180deg,#00b7d9,#00e5ff);color:#03222a;box-shadow:0 0 20px rgba(0,229,255,.55),0 6px 0 #008ba3;}
+  .btn.red{background:linear-gradient(180deg,#ff5277,#ff1744);color:#470015;box-shadow:0 0 20px rgba(255,23,68,.55),0 6px 0 #a90022;}
+  .btn.purple{background:linear-gradient(180deg,#7a2ff0,#b026ff);color:#fff;box-shadow:0 0 20px rgba(176,38,255,.55),0 6px 0 #5d0fa8;}
+  .btn.big{font-size:1.2rem;padding:16px 32px;}
+  .btn[disabled]{opacity:.5;cursor:not-allowed;transform:none;}
+  .mt10{margin-top:14px;}
+  .muted{opacity:.85;}
+
+  .pop{display:flex;gap:12px;}
+  .gbtn{flex:1;cursor:pointer;text-align:center;font-weight:900;font-size:1rem;padding:13px;border-radius:14px;letter-spacing:1px;
+    background:rgba(8,3,32,.7);color:#cfd8ff;border:2px solid rgba(0,247,255,.45);transition:.12s;}
+  .gbtn.selA{background:linear-gradient(180deg,#3d0f77,#b026ff);border-color:#ff6b9d;color:#fff;box-shadow:0 0 20px rgba(255,45,130,.5);}
+  .gbtn.selB{background:linear-gradient(180deg,#0b4b5e,#00b7d9);border-color:#00f7ff;color:#fff;box-shadow:0 0 20px rgba(0,247,255,.5);}
+  .info-box{background:rgba(20,6,58,.5);border:1px dashed rgba(0,247,255,.5);border-radius:16px;padding:12px 14px;font-size:.84rem;line-height:1.6;margin-top:14px;text-align:left;color:#d3dcff;}
+  .info-box b{color:#ffe9a8;}
+  .chip{display:inline-block;background:rgba(120,60,220,.2);border:1px solid rgba(0,247,255,.6);border-radius:999px;padding:6px 12px;font-weight:800;font-size:.82rem;flex:1;text-align:center;min-width:84px;color:#dffaff;text-shadow:0 0 8px rgba(0,247,255,.7);}
+  .chiprow{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-bottom:10px;}
+
+  .p1-layout{display:grid;grid-template-columns:1fr;gap:12px;}
+  @media(min-width:820px){.p1-layout{grid-template-columns:1fr 190px;align-items:stretch;}}
+  .fb{min-height:2.5em;font-weight:800;font-size:clamp(.9rem,3.2vw,1.02rem);margin-top:12px;text-align:center;}
+  .fb.good{color:#b8ffe0;text-shadow:0 0 12px rgba(57,255,158,.8);}
+  .fb.bad{color:#ffc9d4;text-shadow:0 0 10px rgba(255,45,85,.7);}
+  .fb.hint{color:#fff3b8;text-shadow:0 0 10px rgba(255,210,74,.7);}
+  .fb .big{display:inline-block;background:rgba(0,0,0,.3);border-radius:10px;padding:2px 10px;margin:2px 0;}
+
+  /* Fase 1 y 2 — elige la forma correcta (HAVE/HAS · DON'T/DOESN'T) */
+  .sen-label{text-align:center;font-weight:900;letter-spacing:1px;color:#ffe9a8;font-size:.88rem;margin-bottom:10px;text-shadow:0 0 10px rgba(255,210,74,.6);}
+  .virb{display:flex;flex-wrap:wrap;gap:7px;justify-content:center;align-items:center;font-weight:900;font-size:clamp(1.05rem,4.4vw,1.45rem);color:#eef3ff;line-height:1.25;text-align:center;}
+  .vio{font-size:1.25em;filter:drop-shadow(0 0 8px rgba(255,255,255,.35));}
+  .vsub{color:#cfd8ff;}
+  .vblank{border-bottom:3px dashed #ffe9a8;min-width:96px;display:inline-block;color:transparent;text-shadow:none;}
+  .ansrow{display:flex;gap:10px;margin-top:12px;}
+  .ansb{flex:1;cursor:pointer;border:2px solid;font-weight:900;font-size:clamp(.9rem,3.4vw,1.05rem);padding:12px 10px;border-radius:14px;
+    background:rgba(8,3,32,.6);color:#eef3ff;transition:.12s;font-family:'Nunito',sans-serif;}
+  .ansb .at{display:block;font-family:'Cinzel',serif;font-size:clamp(1.05rem,4.6vw,1.35rem);letter-spacing:1px;}
+  .ansb .af{display:block;margin-top:4px;font-family:'Cinzel',serif;letter-spacing:1px;font-size:.9em;}
+  .ansb:active{transform:translateY(3px);}
+  .ansb.picked{background:linear-gradient(180deg,rgba(0,255,140,.35),rgba(0,200,110,.2));border-color:#39ff9e;color:#b8ffe0;box-shadow:0 0 26px rgba(0,255,140,.65);}
+  .ansb.bad{animation:shake .4s;border-color:#ff2d55;background:rgba(255,45,85,.28);color:#ffd7df;box-shadow:0 0 22px rgba(255,45,85,.55);}
+  @keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-6px)}50%{transform:translateX(5px)}75%{transform:translateX(-3px)}}
+  .ansb.vo{border-color:rgba(0,247,255,.55);box-shadow:0 0 14px rgba(0,247,255,.16),inset 0 0 16px rgba(0,247,255,.06);}
+
+  /* ---------- potion ---------- */
+  .pot-side{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;
+    background:rgba(12,4,44,.5);border:1px dashed rgba(0,247,255,.5);border-radius:20px;padding:12px 8px;box-shadow:inset 0 0 22px rgba(0,247,255,.06);}
+  .pot-side .lab{font-weight:900;letter-spacing:1px;font-size:.78rem;color:#ffe9a8;text-shadow:0 0 10px rgba(255,210,74,.5);}
+  .pot{position:relative;width:118px;height:170px;margin:8px auto;}
+  .pot-btl{position:absolute;left:50%;bottom:8px;transform:translateX(-50%);width:86px;height:128px;border-radius:16px 16px 46% 46%/12% 12% 62% 62%;
+    background:rgba(140,70,255,.16);border:3px solid rgba(0,247,255,.65);overflow:hidden;box-shadow:0 0 26px rgba(0,247,255,.35),inset 0 0 22px rgba(0,229,255,.25);}
+  .pot-liq{position:absolute;left:0;right:0;bottom:0;height:0%;transition:height .09s linear;
+    background:linear-gradient(180deg,#ff9d5c,#ff8a2e);box-shadow:inset 0 6px 10px rgba(255,255,255,.4),0 0 18px rgba(255,150,60,.7);}
+  .pot-liq.danger{background:linear-gradient(180deg,#ff6b9d,#ff1744);box-shadow:inset 0 6px 10px rgba(255,255,255,.5),0 0 22px rgba(255,23,68,.9);}
+  .pot-glob{position:absolute;bottom:6px;left:50%;transform:translateX(-50%);width:64px;height:26px;border-radius:50% 50% 46% 46%;background:rgba(0,247,255,.35);filter:blur(6px);opacity:.8;}
+  .pot-neck{position:absolute;left:50%;transform:translateX(-50%);bottom:120px;width:26px;height:30px;border-radius:6px;
+    background:rgba(140,70,255,.25);border:3px solid rgba(0,247,255,.65);}
+  .pot-cork{position:absolute;left:50%;transform:translateX(-50%);bottom:146px;width:24px;height:18px;border-radius:5px;
+    background:linear-gradient(180deg,#b98aff,#6a12c8);box-shadow:0 0 8px rgba(176,38,255,.6);}
+  .pbb{position:absolute;border-radius:50%;background:radial-gradient(circle at 35% 30%,#d2ffef,rgba(0,229,255,.9));
+    box-shadow:0 0 8px rgba(0,229,255,.8);animation:ris .9s ease-in infinite;z-index:2;}
+  .p1{width:11px;height:11px;left:26%;bottom:12px;}
+  .p2{width:8px;height:8px;left:47%;bottom:5px;animation-delay:.3s;}
+  .p3{width:6px;height:6px;left:63%;bottom:13px;animation-delay:.6s;}
+  @keyframes ris{0%{transform:translateY(0) scale(.4);opacity:0}25%{opacity:1}100%{transform:translateY(-70px) scale(1.5);opacity:0}}
+  .pot.boom{animation:wob .28s linear infinite;}
+  @keyframes wob{0%{transform:rotate(0)}25%{transform:rotate(-5deg)}75%{transform:rotate(4deg)}100%{transform:rotate(0)}}
+  .spk{position:absolute;left:50%;top:40%;width:10px;height:10px;border-radius:50%;z-index:5;pointer-events:none;
+    background:radial-gradient(circle at 35% 30%,#fff3c0,#ff6b1a);box-shadow:0 0 12px rgba(255,140,40,.95);
+    animation:spl .6s ease-out forwards;}
+  @keyframes spl{0%{transform:translate(0,0) scale(1);opacity:1}100%{transform:translate(var(--dx),var(--dy)) scale(.3);opacity:0}}
+  .cntd{font-family:'Cinzel',serif;font-weight:900;font-size:1.25rem;color:#fff;margin-top:2px;text-shadow:0 0 14px rgba(0,247,255,.9);}
+
+  /* ---------- phase 3 ---------- */
+  .p2-sen{display:flex;flex-wrap:wrap;gap:5px;justify-content:center;font-weight:900;font-size:clamp(1.05rem,4vw,1.4rem);
+    color:#eef3ff;background:rgba(8,3,32,.75);border:1px solid rgba(0,247,255,.4);border-radius:16px;padding:14px 16px;box-shadow:0 0 22px rgba(0,247,255,.18);margin-bottom:12px;}
+  .p2-sen .pw{background:rgba(255,210,74,.25);border-radius:8px;padding:2px 8px;color:#ffe9a8;text-shadow:0 0 8px rgba(255,210,74,.7);}
+  .rec{min-height:1.6em;font-weight:800;color:#dffaff;text-align:center;font-size:.94rem;margin-top:10px;text-shadow:0 0 8px rgba(0,247,255,.5);}
+  .gauge{max-width:420px;margin:10px auto 0;text-align:center;}
+  .gbar{height:14px;border-radius:999px;background:rgba(0,0,0,.4);overflow:hidden;border:1px solid rgba(0,247,255,.45);box-shadow:inset 0 0 10px rgba(0,0,0,.6);}
+  .gfill{height:100%;width:0%;border-radius:999px;transition:width .5s ease;background:linear-gradient(180deg,#ff7096,#e8356a);box-shadow:0 0 12px rgba(255,45,110,.8);}
+  .gfill.hi{background:linear-gradient(180deg,#39ff9e,#00c996);box-shadow:0 0 12px rgba(57,255,158,.8);}
+  .gfill.mid{background:linear-gradient(180deg,#ffd24a,#ffab2e);box-shadow:0 0 12px rgba(255,210,74,.8);}
+  .gscore{font-weight:900;font-size:1rem;margin-top:6px;letter-spacing:1px;}
+  .opts{display:grid;gap:10px;margin-top:14px;}
+  .opt{cursor:pointer;border:2px solid rgba(0,247,255,.45);background:rgba(8,3,32,.75);color:#eef3ff;font-weight:900;
+    font-size:clamp(.95rem,3.6vw,1.1rem);padding:14px 16px;border-radius:14px;text-align:left;box-shadow:0 0 14px rgba(0,247,255,.14),0 5px 0 rgba(0,0,0,.4);transition:.1s;}
+  .opt:active{transform:translateY(3px);box-shadow:none;}
+  .opt.locked{cursor:default;}
+  .opt.yes{background:linear-gradient(180deg,rgba(0,255,140,.35),rgba(0,200,110,.2));border-color:#39ff9e;color:#b8ffe0;box-shadow:0 0 24px rgba(0,255,140,.55);}
+  .opt.no{background:linear-gradient(180deg,rgba(255,45,85,.3),rgba(180,10,50,.2));border-color:#ff2d55;color:#ffd7df;box-shadow:0 0 20px rgba(255,45,85,.5);}
+
+  /* ---------- certificate (mystic) ---------- */
+  .certificate{max-width:640px;margin:0 auto;background:linear-gradient(180deg,#180b3e,#2b0a63);border-radius:24px;padding:24px 20px;
+    color:#ffe9a8;box-shadow:0 0 46px rgba(255,138,40,.4),0 18px 44px rgba(0,0,0,.55);border:3px solid rgba(255,45,130,.7);text-align:center;}
+  .cert-head{font-family:'Cinzel',serif;font-weight:900;letter-spacing:2px;font-size:clamp(1.1rem,4.6vw,1.5rem);color:#fff;text-shadow:0 0 16px rgba(0,247,255,.8);}
+  .cert-sub{font-size:.78rem;font-weight:800;letter-spacing:2px;color:#ffd24a;margin-top:2px;text-shadow:0 0 8px rgba(255,210,74,.5);}
+  .avatar-zone{position:relative;width:170px;height:170px;margin:10px auto 6px;}
+  .avatar-zone .aura{position:absolute;inset:-4px;border-radius:50%;animation:pu 2.4s ease-in-out infinite;}
+  @keyframes pu{0%,100%{opacity:.7}50%{opacity:1}}
+  .avatar-zone .orb{position:absolute;inset:12px;border-radius:50%;background:radial-gradient(circle at 38% 28%,#3d1a70,#17092e 72%);
+    border:3px solid #fff;display:flex;align-items:center;justify-content:center;}
+  .avatar-zone .wiz{font-size:3.3rem;}
+  .rank-pill{margin:0 auto 8px;padding:5px 16px;font-weight:900;letter-spacing:2px;font-size:.74rem;border-radius:999px;
+    text-align:center;background:rgba(6,2,22,.88);width:max-content;white-space:nowrap;text-transform:uppercase;}
+  .spark{position:absolute;border-radius:50%;background:#fff;}
+  .spark:nth-child(1){top:2%;left:16%;width:9px;height:9px;}
+  .spark:nth-child(2){top:24%;left:1%;width:6px;height:6px;}
+  .spark:nth-child(3){top:0%;right:20%;width:7px;height:7px;}
+  .spark:nth-child(4){top:26%;right:2%;width:5px;height:5px;}
+  .spark:nth-child(5){bottom:22%;left:3%;width:8px;height:8px;}
+  .spark:nth-child(6){bottom:2%;right:26%;width:6px;height:6px;}
+  .spark:nth-child(7){top:52%;left:0%;width:5px;height:5px;}
+  .spark:nth-child(8){top:50%;right:0%;width:4px;height:4px;}
+  @media(prefers-reduced-motion:reduce){.avatar-zone *{animation:none!important}}
+  .cert-cell{background:rgba(10,3,40,.6);border:1px solid rgba(0,247,255,.4);border-radius:12px;padding:6px 10px;word-break:break-word;color:#cfe6ff;}
+  .det{margin-top:14px;background:rgba(10,3,40,.6);border:1px solid rgba(0,247,255,.35);border-radius:14px;padding:12px;
+    font-weight:800;color:#d3dcff;text-align:center;}
+  .det-row{display:flex;justify-content:space-between;gap:10px;padding:6px 2px;border-bottom:1px dashed rgba(0,247,255,.3);font-size:.92rem;flex-wrap:wrap;}
+  .det-row.last{background:rgba(176,38,255,.3);margin:6px -12px -12px;padding:12px;border-radius:0 0 14px 14px;font-size:1.05rem;color:#fff;text-shadow:0 0 12px rgba(255,255,255,.4);}
+  .red{color:#ff6b9d;text-shadow:0 0 8px rgba(255,45,110,.6);}
+  .green{color:#7dffbc;}
+  .btn-row{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:14px;}
+  .note-shot{margin-top:12px;font-size:.9rem;color:#ffd24a;font-weight:800;border-top:2px dashed rgba(0,247,255,.35);padding-top:10px;text-align:center;text-shadow:0 0 8px rgba(255,210,74,.5);}
+
+  .overlay{position:fixed;inset:0;z-index:50;display:none;align-items:center;justify-content:center;flex-direction:column;text-align:center;
+    background:radial-gradient(circle at 50% 40%,rgba(223,90,20,.9),rgba(3,1,16,.97));}
+  .overlay.on{display:flex;animation:fadeIn .4s;}
+  .ov-emoji{font-size:3rem;filter:drop-shadow(0 0 16px rgba(0,247,255,.9));}
+  .ov-big{font-family:'Cinzel',serif;font-weight:900;font-size:clamp(1.8rem,8vw,3.6rem);color:#fff;text-shadow:0 0 26px rgba(0,247,255,.95),0 0 60px rgba(255,138,40,.8);}
+  .ov-sub{color:#ffe9a8;font-weight:800;font-size:clamp(1rem,4vw,1.4rem);margin-top:10px;text-shadow:0 0 10px rgba(255,210,74,.8);}
+  .fab{position:fixed;right:14px;bottom:14px;z-index:40;width:52px;height:52px;border-radius:50%;border:none;cursor:pointer;font-size:1.3rem;
+    background:linear-gradient(180deg,#7a2ff0,#b026ff);box-shadow:0 0 22px rgba(176,38,255,.6),0 5px 0 #5d0fa8;}
+</style>
+</head>
+<body translate="no">
+<div id="sky"></div>
+
+<div class="wr" translate="no">
+
+  <!-- ============ START ============ -->
+  <section id="screen-start" class="screen on center">
+    <div class="titles">
+      <h1 class="h-title" id="rainbowTitle"></h1>
+      <div class="subtitle">✦ BY TEACHER LIZBETH GARAY ✦</div>
+      <div class="designed">🌈 ENGLISH · HAVE & HAS · DON'T & DOESN'T · SPEAKING 🎙️</div>
+    </div>
+    <div class="bigger">🌈✨</div>
+    <div class="card mt10" style="max-width:540px;margin:0 auto;">
+      <div class="fld">
+        <label>🌈 NOMBRE</label>
+        <input id="inpName" type="text" maxlength="28" placeholder="Escribe tu nombre..." autocomplete="off">
+      </div>
+      <div class="fld" style="margin-top:12px;">
+        <label>🏰 ELIGE TU GRUPO</label>
+        <div class="pop">
+          <div class="gbtn" id="gA" onclick="setGroup('A')">GRUPO A</div>
+          <div class="gbtn" id="gB" onclick="setGroup('B')">GRUPO B</div>
+        </div>
+      </div>
+      <button class="btn big mt10" onclick="startGame()">🔥 COMENZAR</button>
+      <div class="info-box">
+        <b>🏫 HECHO PARA 6.º DE PRIMARIA</b><br>
+        <b>¿CÓMO JUGAR?</b><br>
+        🌈 <b>Fase 1 — ¡HAVE O HAS!</b> Completa oraciones como "She __ bangs" (Ella tiene copete) eligiendo <b>HAVE</b> o <b>HAS</b>. ¡Demuestra lo que recuerdas de clase!<br>
+        ⏱️ Tienes <b>12 segundos</b>. Si explota pierdes la respuesta. Desde la <b>3.ª explosión</b> pierdes <b>1 punto</b>; con <b>4 explosiones</b> el juego se reinicia.<br>
+        🚫 <b>Fase 2 — ¡DON'T O DOESN'T!</b> Negaciones: "He __ have a beard" (Él no tiene barba). Elige <b>DON'T</b> o <b>DOESN'T</b>. ¡Detrás de ambos el verbo va en <b>forma normal</b>: HAVE!<br>
+        🎤 <b>Fase 3 — ¡DILO! (Speaking Quiz)</b> <b>4 afirmaciones, 3 negaciones y 3 preguntas</b>: léelas con el <b>micrófono</b> y elige la traducción (aparece al pronunciar bien, ≥&nbsp;70%).<br>
+        💥 A partir del <b>2.º error</b> tu calificación baja. ⛔ Solo <b>3 errores</b>; el <b>4.º error reinicia el juego</b>.<br>
+        🏆 Nota final: mínimo 6, máximo 10.
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PHASE 1 Y 2 (elige el verbo) ============ -->
+  <section id="screen-p1" class="screen">
+    <div class="titles">
+      <h1 class="h-title" style="font-size:clamp(1.1rem,4.6vw,1.6rem);" id="p1Title">FASE 1 · ¿HAVE O HAS?</h1>
+    </div>
+    <div class="chiprow">
+      <span class="chip">✅ <b id="p1ok">0</b>/16</span>
+      <span class="chip">💥 Explosiones: <b id="p1exp">0</b></span>
+      <span class="chip">⚠️ Errores: <b id="p1err">0</b></span>
+      <span class="chip">⭐ <b id="p1pts">0</b> pts</span>
+    </div>
+    <div class="p1-layout">
+      <div class="card">
+        <div class="sen-label">🔮 COMPLETA CON HAVE O HAS</div>
+        <div class="virb" id="virb"></div>
+        <div class="fb" id="fb1">🌈 Elige HAVE O HAS según el sujeto.</div>
+        <div class="ansrow">
+          <button class="ansb vo" id="ansYes" onclick="answerUI(this)"></button>
+          <button class="ansb vo" id="ansNo" onclick="answerUI(this)"></button>
+        </div>
+      </div>
+      <div class="pot-side">
+        <div class="lab">🧪 PÓCIMA</div>
+        <div class="pot" id="pot">
+          <div class="pot-cork"></div>
+          <div class="pot-neck"></div>
+          <div class="pot-btl">
+            <div class="pot-liq" id="potLiq"></div>
+            <span class="pbb p1"></span><span class="pbb p2"></span><span class="pbb p3"></span>
+          </div>
+          <div class="pot-glob"></div>
+        </div>
+        <div class="lab">⏳ <span class="cntd" id="cntd">12</span></div>
+        <div class="lab" id="potLabel">¡Contra reloj!</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PHASE 3 ============ -->
+  <section id="screen-p2" class="screen">
+    <div class="titles">
+      <h1 class="h-title" style="font-size:clamp(1.1rem,4.6vw,1.6rem);">FASE 3 · SPEAKING QUIZ</h1>
+    </div>
+    <div class="chiprow">
+      <span class="chip">✅ <b id="p2ok">0</b>/10</span>
+      <span class="chip">🎤 Pronunciación: <b id="p2pron">—</b></span>
+      <span class="chip">⚠️ Errores: <b id="p2err">0</b></span>
+      <span class="chip">⭐ <b id="p2pts">0</b> pts</span>
+    </div>
+    <div class="card" style="max-width:680px;margin:0 auto;">
+      <div class="sen-label">🎙️ LEE EN VOZ ALTA ESTA ORACIÓN EN INGLÉS Y TRADÚCELA</div>
+      <div class="p2-sen" id="p2Sen"></div>
+      <div style="text-align:center;">
+        <button class="btn blue" id="btnMic" onclick="startMic()">🎤 PRESIONA Y LEE LA ORACIÓN</button>
+      </div>
+      <div class="rec" id="p2Rec"></div>
+      <div class="gauge" id="gauge" style="display:none;">
+        <div class="gbar"><div class="gfill" id="gfill"></div></div>
+        <div class="gscore" id="p2score"></div>
+      </div>
+      <div id="optsWrap" style="display:none;">
+        <div class="sen-label" style="margin-top:12px;">🇪🇸 AHORA ELIGE LA TRADUCCIÓN CORRECTA</div>
+        <div class="opts" id="opts"></div>
+      </div>
+      <div class="fb" id="fbP2">🎙️ Pronuncia bien para desbloquear la traducción.</div>
+      <button class="btn green big mt10" id="btnReport" style="display:none;" onclick="showReport()">📜 VER MI CALIFICACIÓN</button>
+    </div>
+  </section>
+
+  <!-- ============ RESULT ============ -->
+  <section id="screen-result" class="screen">
+    <div class="certificate">
+      <div class="cert-head">WE'RE ALL<br>DIFFERENT</div>
+      <div class="cert-sub">BY TEACHER LIZBETH GARAY</div>
+      <div id="cAvatar"></div>
+      <div class="cert-cell" id="cName"></div>
+      <div class="cert-cell" id="cGrade"></div>
+      <div style="font-size:clamp(3rem,14vw,4.4rem);margin-top:8px;font-weight:900;color:#00f7ff;text-shadow:0 0 24px rgba(0,247,255,.9),0 0 60px rgba(0,247,255,.5);" id="cScore"></div>
+      <div id="cDet"></div>
+      <div id="cShot"></div>
+    </div>
+    <div class="btn-row">
+      <button class="btn" onclick="playAgain()">🔁 JUGAR DE NUEVO</button>
+      <button class="btn purple" onclick="goStart()">👥 OTRO ESTUDIANTE</button>
+    </div>
+  </section>
+</div>
+
+<div class="overlay" id="ovPhase">
+  <div class="ov-emoji" id="ovEmoji">🏕️✨</div>
+  <div class="ov-big" id="ovBig">¡FASE 1!</div>
+  <div class="ov-sub" id="ovSub">Elige HAVE o HAS.</div>
+</div>
+
+<button class="fab" onclick="toggleAudio()" id="fabSound" title="Sonido">🔊</button>
+
+<script>
+'use strict';
+/* ============================================================
+   WE'RE ALL DIFFERENT — By Teacher Lizbeth Garay
+   Fase 1: elige HAVE o HAS según el sujeto (I→HAVE, She→HAS...)
+   Fase 2: elige DON'T o DOESN'T (auxiliares de negación) + HAVE
+   Fase 3: 4 afirmaciones + 3 negaciones + 3 preguntas (Speaking + traducción)
+============================================================ */
+function $(id){ return document.getElementById(id); }
+function shuffle(a){ a=a.slice(); for(var i=a.length-1;i>0;i--){ var j=Math.floor(Math.random()*(i+1)); var t=a[i]; a[i]=a[j]; a[j]=t; } return a; }
+function clamp(v,mi,ma){ return Math.max(mi,Math.min(ma,v)); }
+
+/* ---------- scenery ---------- */
+function sky(){
+  var s=$('sky'), h='';
+  h+='<div class="moon"></div>';
+  for(var i=0;i<70;i++){
+    var x=Math.random()*100, y=Math.random()*100, sz=(1+Math.random()*2.2).toFixed(2);
+    h+='<span class="star" style="left:'+x.toFixed(2)+'%;top:'+y.toFixed(2)+'%;width:'+sz+'px;height:'+sz+'px;animation-duration:'+(1+Math.random()*4).toFixed(2)+'s;animation-delay:'+(Math.random()*6).toFixed(2)+'s;"></span>';
+  }
+  h+='<span class="shoot"></span>';
+  s.innerHTML=h;
+}
+
+/* ---------- audio ---------- */
+var A={on:true,ctx:null};
+function beep(f,d,t,vol,delay){
+  if(!A.on) return;
+  try{
+    A.ctx = A.ctx || new (window.AudioContext||window.webkitAudioContext)();
+    var o=A.ctx.createOscillator(), g=A.ctx.createGain();
+    o.type=t; o.frequency.value=f; g.gain.value=vol||.14;
+    var s=A.ctx.currentTime+((delay||0)||0);
+    o.connect(g); g.connect(A.ctx.destination);
+    o.start(s); g.gain.setValueAtTime((vol||.14),s); g.gain.exponentialRampToValueAtTime(.0001,s+d);
+    o.stop(s+d);
+  }catch(e){}
+}
+function sCor(){ beep(523,.12,'triangle',.16); beep(784,.2,'triangle',.16,.11); }
+function sWro(){ beep(196,.22,'sine',.2); beep(147,.28,'sine',.18,.15); }
+function sBoom(){ beep(70,.5,'sawtooth',.3); beep(55,.7,'square',.25); beep(1200,.3,'square',.12,.05); }
+function toggleAudio(){ A.on=!A.on; $('fabSound').textContent=A.on?'🔊':'🔇'; }
+
+/* ---------- data ---------- */
+var PEN=[1,0.75,0.5,0.3,0.2];
+var MAX_ERR=3;
+var TIME=12000;      /* ms por pregunta (pócima) — un poco más rápido para 6.º */
+var MAX_EXP=4;       /* 4.ª explosión reinicia el juego */
+var PRON_MIN=70;     /* % mínimo de pronunciación para desbloquear la traducción */
+
+/* a = forma base (HAVE / DON'T) · b = forma con -S (HAS / DOESN'T) · s = 1 si la correcta es la forma con -S */
+/* FASE 1: 16 actividades — elige HAVE (I, you, we, they) o HAS (he, she, it) */
+var SENT1=[
+  {em:'👧',a:'HAVE',b:'HAS',s:1,pre:'She',post:'curly hair.',   en:'She has curly hair.'},
+  {em:'👨',a:'HAVE',b:'HAS',s:1,pre:'He',post:'a beard.',       en:'He has a beard.'},
+  {em:'💇‍♀️',a:'HAVE',b:'HAS',s:1,pre:'She',post:'straight hair.',en:'She has straight hair.'},
+  {em:'🤝',a:'HAVE',b:'HAS',s:0,pre:'We',post:'eyebrows.',       en:'We have eyebrows.'},
+  {em:'🧒',a:'HAVE',b:'HAS',s:0,pre:'You',post:'bangs.',         en:'You have bangs.'},
+  {em:'👩‍🦱',a:'HAVE',b:'HAS',s:0,pre:'They',post:'wavy hair.',  en:'They have wavy hair.'},
+  {em:'👨‍🦰',a:'HAVE',b:'HAS',s:1,pre:'He',post:'a mustache.',   en:'He has a mustache.'},
+  {em:'👱‍♀️',a:'HAVE',b:'HAS',s:1,pre:'She',post:'bangs.',       en:'She has bangs.'},
+  {em:'🧳',a:'HAVE',b:'HAS',s:0,pre:'I',post:'a belt.',          en:'I have a belt.'},
+  {em:'🧤',a:'HAVE',b:'HAS',s:0,pre:'You',post:'gloves.',        en:'You have gloves.'},
+  {em:'👫',a:'HAVE',b:'HAS',s:0,pre:'They',post:'necklaces.',    en:'They have necklaces.'},
+  {em:'🧣',a:'HAVE',b:'HAS',s:1,pre:'She',post:'a scarf.',       en:'She has a scarf.'},
+  {em:'🤵',a:'HAVE',b:'HAS',s:0,pre:'We',post:'a tie.',          en:'We have a tie.'},
+  {em:'🧑‍🦲',a:'HAVE',b:'HAS',s:1,pre:'He',post:'a bald head.',  en:'He has a bald head.'},
+  {em:'👜',a:'HAVE',b:'HAS',s:1,pre:'She',post:'a purse.',       en:'She has a purse.'},
+  {em:'🕶️',a:'HAVE',b:'HAS',s:1,pre:'It',post:'sunglasses.',     en:'It has sunglasses.'}
+];
+
+/* FASE 2: 16 negaciones — elige DOESN'T (he, she, it, nombres) o DON'T (I, you, we, they) */
+var SENT2=[
+  {em:'🧔',a:"DON'T",b:"DOESN'T",s:0,pre:'I',post:'have a beard.',         en:"I don't have a beard."},
+  {em:'👨‍🦰',a:"DON'T",b:"DOESN'T",s:1,pre:'He',post:'have a mustache.',  en:"He doesn't have a mustache."},
+  {em:'🧣',a:"DON'T",b:"DOESN'T",s:1,pre:'She',post:'have a scarf.',        en:"She doesn't have a scarf."},
+  {em:'🧳',a:"DON'T",b:"DOESN'T",s:1,pre:'It',post:'have a belt.',          en:"It doesn't have a belt."},
+  {em:'🕶️',a:"DON'T",b:"DOESN'T",s:0,pre:'We',post:'have sunglasses.',     en:"We don't have sunglasses."},
+  {em:'🧒',a:"DON'T",b:"DOESN'T",s:0,pre:'You',post:'have bangs.',          en:"You don't have bangs."},
+  {em:'📿',a:"DON'T",b:"DOESN'T",s:0,pre:'They',post:'have bracelets.',     en:"They don't have bracelets."},
+  {em:'👦',a:"DON'T",b:"DOESN'T",s:1,pre:'Carlos',post:'have a tie.',       en:"Carlos doesn't have a tie."},
+  {em:'👧',a:"DON'T",b:"DOESN'T",s:1,pre:'Ana',post:'have a purse.',        en:"Ana doesn't have a purse."},
+  {em:'👩‍👧',a:"DON'T",b:"DOESN'T",s:0,pre:'Mom and I',post:'have curly hair.',en:"Mom and I don't have curly hair."},
+  {em:'💇‍♀️',a:"DON'T",b:"DOESN'T",s:1,pre:'He',post:'have straight hair.',en:"He doesn't have straight hair."},
+  {em:'💎',a:"DON'T",b:"DOESN'T",s:1,pre:'She',post:'have a necklace.',     en:"She doesn't have a necklace."},
+  {em:'🧑‍🤝‍🧑',a:"DON'T",b:"DOESN'T",s:0,pre:'My friend and I',post:'have wavy hair.',en:"My friend and I don't have wavy hair."},
+  {em:'👫',a:"DON'T",b:"DOESN'T",s:0,pre:'They',post:'have a purse.',       en:"They don't have a purse."},
+  {em:'👩‍🦱',a:"DON'T",b:"DOESN'T",s:1,pre:'She',post:'have curly hair.',  en:"She doesn't have curly hair."},
+  {em:'🤵',a:"DON'T",b:"DOESN'T",s:0,pre:'We',post:'have a tie.',           en:"We don't have a tie."}
+];
+
+/* FASE 3: 4 afirmaciones + 3 negaciones + 3 preguntas (solo pronombres I/He/She/It/You/They/We) */
+var SENT3=[
+  {em:'👱‍♀️',en:'She has bangs.',            es:'Ella tiene copete.'},
+  {em:'👨',en:'He has a beard.',           es:'Él tiene barba.'},
+  {em:'👩‍🦱',en:'They have wavy hair.',     es:'Ellos tienen pelo ondulado.'},
+  {em:'🧒',en:'I have curly hair.',        es:'Yo tengo pelo rizado.'},
+  {em:'👨‍🦰',en:"He doesn't have a mustache.",es:'Él no tiene bigote.'},
+  {em:'👜',en:"She doesn't have a purse.",    es:'Ella no tiene bolso.'},
+  {em:'🧤',en:"They don't have gloves.",      es:'Ellos no tienen guantes.'},
+  {em:'🧣',en:'Does she have a scarf?',       es:'¿Ella tiene una bufanda?'},
+  {em:'🕶️',en:'Does he have sunglasses?',    es:'¿Él tiene gafas de sol?'},
+  {em:'📿',en:'Do they have bracelets?',      es:'¿Ellos tienen pulseras?'}
+];
+
+/* ---------- state ---------- */
+var P1_NAME='FASE 1 · ¿HAVE O HAS?';
+var P1_PROMPT='🌈 Elige la forma correcta: ¿HAVE o HAS?';
+var P2_NAME="FASE 2 · ¿DON'T O DOESN'T?";
+var P2_PROMPT="🌈 Elige el auxiliar correcto: ¿DON'T o DOESN'T?";
+var ST={
+  name:'',group:'',grade:'6.º DE PRIMARIA',
+  errs:0,exp:0,cur:null,locked:false,frac:0,tmr:null,left:0,bSides:false,
+  P:null,
+  ph1:null,ph2:null,ph3:null
+};
+
+function setGroup(g){
+  ST.group=g;
+  $('gA').classList.remove('sel','selA'); $('gB').classList.remove('sel','selB');
+  var el=g==='A'?$('gA'):$('gB');
+  el.classList.add('sel', g==='A'?'selA':'selB');
+}
+
+/* ---------- flows ---------- */
+function rainbowTitle(){
+  var lines=[{t:"WE'RE ALL",sc:.62},{t:'DIFFERENT',sc:.68}];
+  var cols=['#ff8a2e','#00f7ff','#b026ff','#39ff9e','#ffd24a','#ff2ed1','#ff6b9d'], h='';
+  for(var li=0;li<lines.length;li++){
+    var t=lines[li].t;
+    h+='<span style="display:inline-block;transform:scale('+lines[li].sc+');">';
+    for(var i=0;i<t.length;i++){
+      var ch=t[i]; if(ch===' '){ h+='&nbsp;'; continue; }
+      var c=cols[(i+li*3+2)%cols.length];
+      h+='<span class="ltr" style="animation-delay:'+(i*0.045)+'s;color:'+c+';text-shadow:0 0 10px '+c+',0 0 26px '+c+',0 0 46px '+c+';">'+ch+'</span>';
+    }
+    h+='</span>';
+    if(li<lines.length-1) h+='<br>';
+  }
+  $('rainbowTitle').innerHTML=h;
+}
+
+function startGame(){
+  var name=$('inpName').value.trim();
+  if(!name){ alert('🌈 Escribe tu nombre para comenzar.'); $('inpName').focus(); return; }
+  if(!ST.group){ alert('😎 Elige tu grupo (A o B).'); return; }
+  ST.name=name;
+  resetRound();
+  setPhaseUI();
+  showOverlay('¡FASE 1!','¿Recuerdas cuándo usar HAVE o HAS?',function(){
+    hide('screen-start');
+    show('screen-p1'); loadQ();
+  });
+}
+function resetRound(){
+  ST.errs=0; ST.exp=0; ST.cur=null;
+  ST.ph1={set:SENT1,order:shuffle(SENT1),idx:0,ok:0,pts:0,fails:0};
+  ST.ph2={set:SENT2,order:shuffle(SENT2),idx:0,ok:0,pts:0,fails:0};
+  ST.ph3={set:SENT3,order:shuffle(SENT3),idx:0,ok:0,pts:0,fails:0,cur:null,said:false,score:0,scores:[],opts:[],correctIdx:0,locked:false};
+  ST.P=ST.ph1;
+}
+function playAgain(){
+  resetRound();
+  setPhaseUI();
+  show('screen-p1'); hide('screen-result'); hide('screen-p2');
+  loadQ();
+}
+function restartOnErrors(){
+  resetRound();
+  setPhaseUI();
+  showOverlay('¡REINICIO!','Los errores se reinician. ¡Concéntrate!',function(){
+    hide('screen-start'); hide('screen-p2'); hide('screen-result');
+    show('screen-p1'); loadQ();
+  });
+}
+function goStart(){
+  show('screen-start'); hide('screen-p1'); hide('screen-p2'); hide('screen-result');
+  $('inpName').focus();
+}
+function setPhaseUI(){
+  $('p1Title').textContent=ST.P.name;
+  $('fb1').textContent=ST.P.prompt;
+  $('p1ok').textContent='0';
+  $('p1exp').textContent=ST.exp;
+  $('p1err').textContent=ST.errs;
+  $('p1pts').textContent='0';
+}
+
+/* ---------- potion timer (Fase 1 y 2) ---------- */
+function startTimer(){
+  stopTimer();
+  ST.frac=0; ST.left=TIME;
+  renderPot();
+  ST.tmr=setInterval(tick,80);
+}
+function stopTimer(){ if(ST.tmr){ clearInterval(ST.tmr); ST.tmr=null; } }
+function tick(){
+  if(ST.locked) return;
+  ST.left-=80; ST.frac=1-(ST.left/TIME);
+  if(ST.frac>=1){ explode(); return; }
+  renderPot();
+}
+function renderPot(){
+  var f=clamp(ST.frac,0,1);
+  var liq=$('potLiq');
+  liq.style.height=(f*100)+'%';
+  liq.classList.toggle('danger', f>0.66);
+  var sec=Math.max(0,Math.ceil(ST.left/1000));
+  $('cntd').textContent=sec;
+  $('potLabel').textContent= f>0.66 ? '🚨 ¡casi explota!' : (f>0.33 ? '⚗️ ¡rápido!' : '✨ se está llenando...');
+}
+function explode(){
+  stopTimer();
+  ST.exp++;
+  ST.locked=true;
+  sBoom();
+  var pot=$('pot');
+  pot.classList.add('boom');
+  for(var i=0;i<12;i++){
+    var s=document.createElement('span'); s.className='spk';
+    s.style.setProperty('--dx',((Math.random()*240-120))+'px');
+    s.style.setProperty('--dy',((Math.random()*-140-20))+'px');
+    s.style.animationDelay=(Math.random()*0.15)+'s';
+    pot.appendChild(s);
+  }
+  renderChips(); renderChips2();
+  function cleanPot(){
+    pot.classList.remove('boom');
+    while(pot.lastChild && pot.lastChild.className==='spk'){ pot.removeChild(pot.lastChild); }
+  }
+  var fb=$('fb1');
+  if(ST.exp>=MAX_EXP){
+    fb.className='fb hint';
+    fb.innerHTML='💥 <b>¡'+MAX_EXP+'ª EXPLOSIÓN!</b> La pócima explotó demasiadas veces.<br>🔄 El juego se reinicia...';
+    setTimeout(function(){ cleanPot(); restartOnErrors(); },1500);
+    return;
+  }
+  fb.className='fb bad';
+  fb.innerHTML='💥 <b>¡EXPLOTÓ!</b> No elegiste a tiempo.<br>La correcta era <span class="big">'+ST.cur.en.toUpperCase()+'</span> — desde la <b>3.ª</b> explosión pierdes <b>1 punto</b>';
+  setTimeout(function(){ cleanPot(); ST.P.idx++; loadQ(); },1500);
+}
+
+/* ---------- phase 1 y 2 (elige el verbo) ---------- */
+function renderChips(){
+  $('p1ok').textContent=ST.P.ok;
+  $('p1exp').textContent=ST.exp;
+  $('p1err').textContent=ST.errs;
+  $('p1pts').textContent=Math.round(ST.P.pts*10)/10;
+}
+function renderChips2(){
+  $('p2ok').textContent=ST.ph3.ok;
+  $('p2pron').textContent= ST.ph3.said ? ST.ph3.score+'%' : '—';
+  $('p2err').textContent=ST.errs;
+  $('p2pts').textContent=Math.round(ST.ph3.pts*10)/10;
+}
+function loadQ(){
+  if(ST.P.idx>=ST.P.set.length){
+    if(ST.P===ST.ph1){ goP2(); } else { goP3(); }
+    return;
+  }
+  ST.cur=ST.P.order[ST.P.idx];
+  ST.P.fails=0; ST.locked=false;
+  renderChips();
+  $('virb').innerHTML='<span class="vio">'+ST.cur.em+'</span> <span class="vsub">'+ST.cur.pre+'</span> <span class="vblank"></span> <span class="vsub">'+ST.cur.post+'</span>';
+  ST.bSides=Math.random()<0.5;
+  var lA=ST.bSides?ST.cur.b:ST.cur.a, lB=ST.bSides?ST.cur.a:ST.cur.b;
+  $('ansYes').setAttribute('data-s', ST.bSides?'1':'0');
+  $('ansNo').setAttribute('data-s', ST.bSides?'0':'1');
+  $('ansYes').innerHTML='<span class="at">'+lA+'</span>';
+  $('ansNo').innerHTML='<span class="at">'+lB+'</span>';
+  $('ansYes').classList.remove('picked','bad');
+  $('ansNo').classList.remove('picked','bad');
+  $('fb1').className='fb';
+  $('fb1').textContent=ST.P.prompt;
+  startTimer();
+}
+function answerUI(b){ answerS(b.getAttribute('data-s')==='1'?1:0, b); }
+function answerS(hasS, btn){
+  if(ST.locked) return;
+  var c=ST.cur, fb=$('fb1');
+  var good=(hasS?1:0)===(ST.cur.s?1:0);
+  if(!btn){ btn= $('ansYes').getAttribute('data-s')===(hasS?'1':'0') ? $('ansYes') : $('ansNo'); }
+  if(good){
+    ST.locked=true; stopTimer(); sCor();
+    ST.P.ok++; ST.P.pts+=PEN[Math.min(ST.P.fails,PEN.length-1)];
+    btn.classList.add('picked');
+    renderChips();
+    fb.className='fb good';
+    fb.innerHTML='✅ ¡Exacto! <span class="big">'+c.en.toUpperCase()+'</span>';
+    setTimeout(function(){ ST.P.idx++; loadQ(); },1500);
+  }else{
+    ST.P.fails++; ST.errs++; sWro();
+    btn.classList.add('bad');
+    renderChips();
+    if(ST.errs>=MAX_ERR+1){
+      ST.locked=true; stopTimer();
+      fb.className='fb hint';
+      fb.innerHTML='⛔ ¡Oh no! Ese era el '+MAX_ERR+'.º error permitido.<br>🔄 El juego se reinicia...';
+      setTimeout(function(){ restartOnErrors(); },1900);
+      return;
+    }
+    fb.className='fb bad';
+    fb.innerHTML='❌ La correcta era <span class="big">'+c.en.toUpperCase()+'</span>';
+  }
+}
+
+/* ---------- pronouncer ---------- */
+var REC=window.SpeechRecognition||window.webkitSpeechRecognition||null;
+
+function startMic(){
+  var fb=$('fbP2');
+  if(ST.ph3.locked) return;
+  if(ST.ph3.said){ fb.className='fb hint'; fb.textContent='🗣️ ¡Pronunciación lista! Elige la traducción correcta.'; return; }
+  if(!REC){
+    fb.className='fb hint';
+    fb.textContent='⚠️ Tu navegador no soporta micrófono. Usa Chrome. Se desbloquea la traducción.';
+    stMeaning();
+    return;
+  }
+  var btn=$('btnMic'); btn.disabled=true; btn.textContent='🎙️ Escuchando...';
+  fb.className='fb';
+  fb.textContent='🗣️ ¡Dila en voz alta!';
+  $('p2Rec').textContent='';
+  var rec=new REC();
+  var final='';
+  rec.lang='en-US'; rec.interimResults=false; rec.maxAlternatives=1; rec.continuous=false;
+  rec.onresult=function(e){
+    for(var i=0;i<e.results.length;i++){ if(e.results[i].isFinal){ final+=e.results[i][0].transcript+' '; } }
+  };
+  rec.onerror=function(){
+    btn.disabled=false; btn.textContent='🎤 PRESIONA Y LEE LA ORACIÓN';
+    fb.className='fb hint';
+    fb.textContent='⚠️ No te escuché (revisa que el micrófono esté permitido). Inténtalo de nuevo, la traducción sigue bloqueada.';
+    $('p2Rec').textContent='Silencio o sin permiso de micrófono...';
+  };
+  rec.onend=function(){
+    btn.disabled=false;
+    if(final.trim()){
+      ST.ph3.score=pronScore(final, ST.ph3.cur.en);
+      if(ST.ph3.score>=PRON_MIN){
+        fb.className='fb';
+        showScore();
+      }else{
+        fb.className='fb hint';
+        $('gauge').style.display='block';
+        var f=$('gfill');
+        f.style.width=ST.ph3.score+'%';
+        f.className='gfill'+(ST.ph3.score>=70?' hi':(ST.ph3.score>=55?' mid':''));
+        $('p2score').innerHTML='🔒 Pronunciación al <b>'+ST.ph3.score+'%</b> · repite hasta llegar a <b>'+PRON_MIN+'%</b>';
+        $('p2Rec').textContent='🎙️ Te escuché, pero aún no se parece ("'+normTxt(final)+'"). ¡Nuevo intento!';
+        fb.textContent='🗣️ Tu pronunciación debe sonar casi igual a la real. Presiona el micrófono otra vez.';
+        renderChips2();
+      }
+    }else{
+      fb.className='fb hint';
+      fb.textContent='⚠️ No te capté. Presiona el micrófono y pronuncia de nuevo (la traducción sigue bloqueada).';
+      $('p2Rec').textContent='Sin audio captado...';
+    }
+  };
+  setTimeout(function(){ try{rec.stop();}catch(e){} },9000);
+  try{ rec.start(); }catch(e){ fb.className='fb hint'; fb.textContent='⚠️ No se pudo iniciar el micrófono.'; stMeaning(); }
+}
+function pronScore(guess, target){
+  var a=target.toLowerCase().replace(/[^a-z\s]/g,'').trim().split(/\s+/);
+  var b=guess.toLowerCase().replace(/[^a-z\s]/g,'').trim().split(/\s+/);
+  if(!a.length) return 0;
+  var d=lev(a,b);
+  return Math.max(0, Math.round((1 - d/Math.max(a.length,b.length))*100));
+}
+function lev(a,b){
+  var m=a.length, n=b.length, dp=[];
+  for(var i=0;i<=m;i++){ dp[i]=[i]; }
+  for(var j=0;j<=n;j++){ dp[0][j]=j; }
+  for(i=1;i<=m;i++){ for(j=1;j<=n;j++){
+    dp[i][j]=Math.min(dp[i-1][j]+1, dp[i][j-1]+1, dp[i-1][j-1]+(a[i-1]===b[j-1]?0:1));
+  }}
+  return dp[m][n];
+}
+function normTxt(s){ return s.toLowerCase().replace(/[^a-z\s]/g,'').trim().replace(/\s+/g,' '); }
+function showScore(){
+  ST.ph3.said=true; ST.ph3.score=ST.ph3.score||0;
+  ST.ph3.scores.push(ST.ph3.score);
+  $('p2Rec').textContent='🗣️ Dijiste: "'+ST.ph3.cur.en+'"';
+  $('gauge').style.display='block';
+  var f=$('gfill');
+  f.style.width=ST.ph3.score+'%';
+  f.className='gfill'+(ST.ph3.score>=80?' hi':(ST.ph3.score>=60?' mid':''));
+  var msg = ST.ph3.score>=85 ? '¡Excelente pronunciación! 🌟' : (ST.ph3.score>=70 ? '¡Muy bien! Suena casi real 🎯' : '¡Bien! Práctica un poco más la próxima 📖');
+  $('p2score').textContent=ST.ph3.score+'% · '+msg;
+  renderChips2();
+  stMeaning();
+}
+function stMeaning(){
+  var opts=shuffle([ST.ph3.cur.es].concat(poolEs(ST.ph3.cur.es)));
+  ST.ph3.opts=opts;
+  ST.ph3.correctIdx=opts.indexOf(ST.ph3.cur.es);
+  var w=$('opts'), h='';
+  for(var i=0;i<opts.length;i++){
+    h+='<button class="opt" id="opt_'+i+'" onclick="pickTrans('+i+')">'+opts[i]+'</button>';
+  }
+  w.innerHTML=h;
+  $('optsWrap').style.display='block';
+}
+function poolEs(keep){
+  var out=[]; var pool=shuffle(SENT3);
+  for(var i=0;i<pool.length && out.length<2;i++){
+    if(pool[i].es!==keep && out.indexOf(pool[i].es)<0) out.push(pool[i].es);
+  }
+  return out;
+}
+function pickTrans(i){
+  if(ST.ph3.locked) return;
+  var fb=$('fbP2');
+  if(i===ST.ph3.correctIdx){
+    ST.ph3.locked=true;
+    ST.ph3.ok++; ST.ph3.pts+=PEN[Math.min(ST.ph3.fails,PEN.length-1)]; sCor();
+    $('opt_'+i).classList.add('yes');
+    renderChips2();
+    fb.className='fb good';
+    fb.textContent='✅ ¡Correcto! Esa es la traducción. ';
+    $('p2pron').textContent=ST.ph3.said?(ST.ph3.score+'%'):'—';
+    if(ST.ph3.idx+1>=ST.ph3.set.length){
+      setTimeout(function(){ ST.ph3.idx++; p3Done(); },1200);
+    }else{
+      setTimeout(function(){ ST.ph3.idx++; loadP3(); },1200);
+    }
+  }else{
+    ST.ph3.fails++; ST.errs++; sWro();
+    $('opt_'+i).classList.add('no'); $('opt_'+i).disabled=true;
+    renderChips2();
+    if(ST.errs>=MAX_ERR+1){
+      ST.ph3.locked=true;
+      fb.className='fb hint';
+      fb.innerHTML='⛔ ¡Oh no! Ese era el '+MAX_ERR+'.º error permitido.<br>🔄 El juego se reinicia...';
+      setTimeout(function(){ restartOnErrors(); },1900);
+      return;
+    }
+    fb.className='fb bad';
+    fb.textContent='❌ No es esa. La traducción correcta es: "'+ST.ph3.cur.es.toUpperCase()+'"';
+  }
+}
+
+/* ---------- phase 3 ---------- */
+function loadP3(){
+  if(ST.ph3.idx>=ST.ph3.set.length){ p3Done(); return; }
+  ST.ph3.cur=ST.ph3.order[ST.ph3.idx];
+  ST.ph3.fails=0; ST.ph3.said=false; ST.ph3.score=0; ST.ph3.locked=false;
+  ST.ph3.opts=[]; ST.ph3.correctIdx=0;
+  renderChips2();
+  var en=ST.ph3.cur.en.replace(/([^ ]+)/g,'<span class="pw">$1</span>');
+  $('p2Sen').innerHTML=ST.ph3.cur.em+' '+en;
+  $('p2Rec').textContent='';
+  $('gauge').style.display='none';
+  $('gfill').style.width='0%'; $('gfill').className='gfill';
+  $('p2score').textContent='';
+  $('optsWrap').style.display='none'; $('opts').innerHTML='';
+  var btn=$('btnMic'); btn.disabled=false; btn.textContent='🎤 PRESIONA Y LEE LA ORACIÓN';
+  $('fbP2').className='fb';
+  $('fbP2').textContent='🎙️ Presiona el botón y lee en voz alta. La traducción se desbloquea con buena pronunciación.';
+}
+function goP2(){
+  ST.P=ST.ph2; setPhaseUI();
+  show('screen-p1');
+  showOverlay('¡FASE 2!',"Elige el auxiliar correcto: DOESN'T o DON'T.",loadQ);
+}
+function goP3(){
+  ST.P=ST.ph3;
+  $('btnReport').style.display='none';
+  $('p2ok').textContent='0'; $('p2pts').textContent='0'; $('p2err').textContent=ST.errs; $('p2pron').textContent='—';
+  sPha();
+  show('screen-p2'); hide('screen-p1');
+  showOverlay('¡FASE 3!','Lee en voz alta y traduce las oraciones sobre cómo somos y qué tenemos.',loadP3);
+}
+function p3Done(){
+  $('fbP2').className='fb good';
+  $('fbP2').textContent='🎉 ¡FASE 3 COMPLETA! '+ST.ph3.ok+'/'+ST.ph3.set.length+' traducciones correctas.';
+  $('btnReport').style.display='block';
+}
+function sPha(){ [392,523,659,784].forEach(function(f,i){ beep(f,.18,'triangle',.16,i*.1); }); }
+
+/* ---------- report + certificate ---------- */
+function rankFor(grade){
+  if(grade>=10) return {t:'🥇 GUÍA EXPERTO', c:'#ff2d55'};
+  if(grade>=9)  return {t:'GUÍA AVANZADO',  c:'#b026ff'};
+  if(grade>=8)  return {t:'APRENDIZ ÚNICO', c:'#00f7ff'};
+  return {t:'PRINCIPIANTE', c:'#ffd24a'};
+}
+function buildAvatar(rank){
+  var c=rank.c, p='';
+  for(var i=0;i<8;i++){ p+='<span class="spark" style="box-shadow:0 0 7px '+c+'"></span>'; }
+  return '<div class="avatar-zone">'+p+
+    '<div class="aura" style="background:radial-gradient(circle at 50% 50%,'+c+' 0%,rgba(255,138,40,.28) 46%,transparent 74%)"></div>'+
+    '<div class="orb" style="border-color:'+c+'"><span class="wiz">🌈</span></div>'+
+    '</div><div class="rank-pill" style="border:2px solid '+c+';color:'+c+'">'+rank.t+'</div>';
+}
+function sayPron(p){
+  if(p===null) return '—';
+  return p>=85 ? 'Excelente' : (p>=70 ? 'Muy bien' : (p>=55 ? 'Regular' : 'Baja'));
+}
+function showReport(){
+  var LEN=SENT1.length+SENT2.length+SENT3.length;
+  var p1s=ST.ph1.pts/SENT1.length*10;
+  var p2s=ST.ph2.pts/SENT2.length*10;
+  var p3s=ST.ph3.pts/SENT3.length*10;
+  var penal= ST.errs>=2 ? (ST.errs-1) : 0;
+  var bombPen= ST.exp>=3 ? (ST.exp-2) : 0;
+  var raw=((ST.ph1.pts+ST.ph2.pts+ST.ph3.pts)/LEN)*10 - penal - bombPen;
+  var grade=clamp(Math.round(raw),6,10);
+  var rank=rankFor(grade);
+  var pronAvg = ST.ph3.scores.length ? Math.round(ST.ph3.scores.reduce(function(a,b){return a+b;},0)/ST.ph3.scores.length) : null;
+  $('cAvatar').innerHTML=buildAvatar(rank);
+  $('cName').innerHTML='🌈 '+ST.name.replace(/</g,'&lt;');
+  $('cGrade').innerHTML='🎓 GRADO <b>'+ST.grade+'</b> &nbsp;|&nbsp; 🏰 GRUPO <b>'+ST.group+'</b> &nbsp;|&nbsp; 🪞 <b>'+rank.t+'</b>';
+  $('cScore').innerHTML=grade+' <span style="font-size:.4em;">/ 10</span>';
+  $('cDet').innerHTML='<div class="det">📋 <b>REPORTE</b>'+
+    '<div class="det-row"><span>Fase 1 · HAVE o HAS (pócima)</span><span>'+ST.ph1.pts.toFixed(1)+'/'+SENT1.length+' → <b>'+p1s.toFixed(1)+'/10</b></span></div>'+
+    '<div class="det-row"><span>Fase 2 · DON\'T o DOESN\'T</span><span>'+ST.ph2.pts.toFixed(1)+'/'+SENT2.length+' → <b>'+p2s.toFixed(1)+'/10</b></span></div>'+
+    '<div class="det-row"><span>Fase 3 · Speaking Quiz + traducción</span><span>'+ST.ph3.pts.toFixed(1)+'/'+SENT3.length+' → <b>'+p3s.toFixed(1)+'/10</b></span></div>'+
+    '<div class="det-row"><span>Pronunciación promedio</span><span class="'+(pronAvg!==null&&pronAvg>=70?'green':'')+'">'+(pronAvg===null?'—':pronAvg+'% · '+sayPron(pronAvg))+'</span></div>'+
+    '<div class="det-row"><span>Errores</span><span class="red">'+ST.errs+' · –'+penal+' pts</span></div>'+
+    '<div class="det-row"><span>Explosiones de la pócima</span><span class="red">'+ST.exp+' · –'+bombPen+' pts</span></div>'+
+    '<div class="det-row"><span>Nota redondeada (entera)</span><span><b>'+grade+'</b></span></div>'+
+    '<div class="det-row last"><span>CALIFICACIÓN OFICIAL (mín. 6)</span><span><b>'+grade+' / 10</b></span></div></div>';
+  $('cShot').innerHTML= grade===10
+    ? '<div class="note-shot">🏆 ¡LO LOGRASTE, '+rank.t+'! Toma una <b>captura de pantalla</b> de tu reporte y compártela con tu <b>GRUPO DE INGLÉS</b>. ✨🌈</div>'
+    : '<div class="note-shot">💪 ¡Buen intento, '+rank.t+'! Practica en clase HAVE/HAS y DON\'T/DOESN\'T, y vuelve a intentarlo. ¡Eres único, tú puedes! ⭐</div>';
+  show('screen-result'); hide('screen-p2'); hide('screen-p1');
+  sPha();
+}
+
+/* ---------- helpers ---------- */
+function show(id){ $(id).classList.add('on'); }
+function hide(id){ $(id).classList.remove('on'); }
+function showOverlay(big,sub,cb){
+  $('ovBig').textContent=big;
+  $('ovSub').textContent=sub;
+  $('ovEmoji').textContent = big.indexOf('REINICIO')>=0 ? '🔄' : (big.indexOf('FASE 3')>=0 ? '🎙️' : (big.indexOf('FASE 2')>=0 ? '🚫' : '🌈'));
+  $('ovPhase').classList.add('on');
+  setTimeout(function(){ $('ovPhase').classList.remove('on'); if(cb) cb(); },1700);
+}
+
+/* ---------- events ---------- */
+$('inpName').addEventListener('keydown',function(e){ if(e.key==='Enter') startGame(); });
+window.addEventListener('resize',sky);
+
+/* ---------- boot ---------- */
+(function init(){
+  sky();
+  rainbowTitle();
+})();
+</script>
+</body>
+</html>
